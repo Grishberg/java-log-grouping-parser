@@ -4,17 +4,19 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		System.out.println("Hello World!");
-
-		Scanner input = new Scanner(System.in);
-
-		System.out.print("Enter a number: ");
-		double number1 = input.nextDouble();
-
-		System.out.print("Enter second number: ");
-		double number2 = input.nextDouble();
-
-		double product = number1 * number2;
-		System.out.printf("The product of both numbers is: %f", product);
+		String src = "start, a, 1\n" +
+			"start, b, 2\n" +
+			"call, a, 3\n"+
+			"call, b, 4\n"+
+			"get, b, 6\n"+
+			"get, a, 10";
+		String[] lines = src.split("\n");
+		Parser p = new Parser();
+		
+		for(String l: lines) {
+			p.process(l);
+		}
+		
+		System.out.println(p);
 	}
 }
